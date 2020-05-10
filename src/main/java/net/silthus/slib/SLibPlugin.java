@@ -1,4 +1,4 @@
-package net.silthus.template;
+package net.silthus.slib;
 
 import java.io.File;
 import org.bukkit.event.EventHandler;
@@ -8,11 +8,11 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
-public class TemplatePlugin extends JavaPlugin implements Listener {
+public class SLibPlugin extends JavaPlugin implements Listener {
 
-  public TemplatePlugin() {}
+  public SLibPlugin() {}
 
-  public TemplatePlugin(
+  public SLibPlugin(
       JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
     super(loader, description, dataFolder, file);
   }
