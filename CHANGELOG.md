@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Silthus/sLib/compare/v1.0.3...v1.0.4) (2020-05-22)
+
+
+### Bug Fixes
+
+* **release:** provide github_api_url env ([9950993](https://github.com/Silthus/sLib/commit/9950993f80518040405a86f0ba94f9c89ec6f0e8))
+
 ## [1.0.3](https://github.com/Silthus/sLib/compare/v1.0.2...v1.0.3) (2020-05-22)
 
 
