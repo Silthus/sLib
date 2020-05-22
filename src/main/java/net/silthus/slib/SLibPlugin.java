@@ -1,30 +1,28 @@
 package net.silthus.slib;
 
-import java.io.File;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import net.silthus.slib.bukkit.BasePlugin;
 import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
-public class SLibPlugin extends JavaPlugin implements Listener {
+import java.io.File;
 
-  public SLibPlugin() {}
+public class SLibPlugin extends BasePlugin {
 
-  public SLibPlugin(
-      JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
-    super(loader, description, dataFolder, file);
-  }
+    public SLibPlugin() {
+    }
 
-  @Override
-  public void onEnable() {
+    public SLibPlugin(
+            JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
+        super(loader, description, dataFolder, file);
+    }
 
-    getServer().getPluginManager().registerEvents(this, this);
-  }
+    @Override
+    public void enable() {
+        
+    }
 
-  @EventHandler
-  public void onPlayerJoin(PlayerJoinEvent event) {
-    getLogger().info("Player joined.");
-  }
+    @Override
+    public void disable() {
+
+    }
 }

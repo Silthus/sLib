@@ -10,24 +10,18 @@ plugins {
     id 'kr.entree.spigradle' version '1.2.1'
     id 'java'
     id 'jacoco'
-    id 'com.diffplug.gradle.spotless' version '3.28.1'
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
-apply from: "$rootDir/gradle/spotless.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 8
+targetCompatibility = 8
 
 ext {
     //Define one of the supported mc versions
     mcVersion = project.property("mcVersion")
     packageName = project.property("packageName")
-    junitVersion = '5.6.2'
-    guavaVersion = '29.0-jre'
-    immutablesVersion = '2.8.7'
-    errorproneVersion = '2.3.4'
 }
 
 group project.property("group")
@@ -36,7 +30,6 @@ spigot {
     authors = [project.property("author")]
     apiVersion = project.property("apiVersion")
     load = STARTUP
-    //    depends = ['']
 }
 
 compileJava {
@@ -63,8 +56,14 @@ repositories {
         }
     }
 
-    maven { url = 'https://artifactory.silthus.net/artifactory/libs-release' }
-    maven { url = 'https://artifactory.silthus.net/artifactory/libs-snapshot' }
+    maven {
+        name = 'github'
+        url = 'https://maven.pkg.github.com/Silthus/ConfigLib'
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
 
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
@@ -80,6 +79,10 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
 
     //Add dependencies here
+    implementation 'de.exlll:configlib-bukkit:2.6.0'
+    implementation 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
+    implementation 'com.github.stefvanschie.inventoryframework:IF:0.5.19'
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0-RC2'
 
     //Test dependencies
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
@@ -91,14 +94,38 @@ dependencies {
 }
 
 test {
-    useJUnit()
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    ignoreFailures = true
 }
 
 shadowJar {
     classifier = ''
+    dependencies {
+        include(dependency('de.exlll:configlib-bukkit:2.6.0'))
+        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
+        include(dependency('com.github.stefvanschie.inventoryframework:IF:0.5.19'))
+        include(dependency('jakarta.persistence:jakarta.persistence-api:3.0.0-RC2'))
+    }
     relocate 'co.aikar.commands', "${packageName}.acf"
     relocate 'co.aikar.locales', "${packageName}.locales"
+    relocate 'de.exlll.configlib', "${packageName}.configlib"
+    relocate 'com.github.stefvanschie.inventoryframework', "${packageName}.inventoryframework"
+    relocate 'jakarta', "${packageName}.jakarta"
 }
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+tasks.build.dependsOn(shadowJar)
+tasks.publish.dependsOn(shadowJar)
 
 processResources {
     project.properties.put("version", this.version)
