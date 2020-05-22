@@ -116,6 +116,9 @@ shadowJar {
     relocate 'jakarta', "${packageName}.jakarta"
 }
 
+tasks.build.dependsOn(shadowJar)
+tasks.publish.dependsOn(shadowJar)
+
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
         tasks.withType(Javadoc) {
@@ -123,9 +126,6 @@ if (JavaVersion.current().isJava8Compatible()) {
         }
     }
 }
-
-tasks.build.dependsOn(shadowJar)
-tasks.publish.dependsOn(shadowJar)
 
 processResources {
     project.properties.put("version", this.version)

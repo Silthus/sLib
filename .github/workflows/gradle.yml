@@ -85,4 +85,4 @@ jobs:
           yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_URL: https://api.github.com
+          GITHUB_API_URL: "https://api.github.com"
