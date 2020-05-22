@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Silthus/sLib/compare/v1.0.0...v1.0.1) (2020-05-22)
+
+
+### Bug Fixes
+
+* **release:** update semantic-release/GitHub ([8496217](https://github.com/Silthus/sLib/commit/8496217f9f99965dd281e6425d813b4955c5b289))
+
 # 1.0.0 (2020-05-22)
 
 
