@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Silthus/sLib/compare/v1.0.2...v1.0.3) (2020-05-22)
+
+
+### Bug Fixes
+
+* build ([6c1281f](https://github.com/Silthus/sLib/commit/6c1281fd57ad2c85e54fdc13a5565dcf9b5b90c0))
+
 ## [1.0.2](https://github.com/Silthus/sLib/compare/v1.0.1...v1.0.2) (2020-05-22)
 
 
