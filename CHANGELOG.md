@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Silthus/sLib/compare/v1.0.1...v1.0.2) (2020-05-22)
+
+
+### Bug Fixes
+
+* **build:** update yarn.lock ([191fe41](https://github.com/Silthus/sLib/commit/191fe4141347d13d1417153adaa676e1920fdaff))
+
 ## [1.0.1](https://github.com/Silthus/sLib/compare/v1.0.0...v1.0.1) (2020-05-22)
 
 
