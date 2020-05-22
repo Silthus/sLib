@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
 
+@kr.entree.spigradle.Plugin
 public class SLibPlugin extends BasePlugin {
 
     public SLibPlugin() {
