@@ -145,7 +145,6 @@ task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
 
 task deploy(type: Copy, dependsOn: [
     'cleanPlugin',
-    'spotlessApply',
     'jar'
 ]) {
     group 'deploy'
@@ -196,4 +195,4 @@ task setupServer {
     new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
 }
 
-defaultTasks 'spotlessApply', 'build', 'deploy'
+defaultTasks 'build', 'deploy'
