@@ -1,6 +1,9 @@
 package net.silthus.slib.bukkit;
 
+import com.google.inject.Binder;
+import com.netflix.governator.annotations.PreConfiguration;
 import lombok.Getter;
+import net.silthus.slib.injection.SpigotExtension;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.HandlerList;
@@ -9,13 +12,16 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.File;
+import java.util.logging.Level;
 
 /**
  * @author Silthus
  */
 @Getter
-public abstract class BasePlugin extends JavaPlugin implements CommandExecutor {
+public abstract class BasePlugin extends SpigotExtension implements CommandExecutor {
 
     public BasePlugin() {
     }
@@ -25,57 +31,56 @@ public abstract class BasePlugin extends JavaPlugin implements CommandExecutor {
         super(loader, description, dataFolder, file);
     }
 
-    public final void onEnable() {
+    @PreConfiguration
+    public void onPreConfiguration() {
 
-        super.onEnable();
+        load();
 
-        // lets register the plugin as component
-        // TODO: do guice dependency injection
-        // RaidCraft.registerComponent(getClass(), this);
-
-        // create default folders
-        getDataFolder().mkdirs();
-
-        // call the sub plugins to enable
-        enable();
-
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this, this::loadDependencyConfigs, 5 * 20L);
-
-        PluginDescriptionFile description = getDescription();
-        getLogger().info(description.getName() + "-v" + description.getVersion() + " enabled.");
+        getLogger().info(getName() + "-v" + getVersion() + " loaded.");
     }
 
-    public final void onDisable() {
+    @PostConstruct
+    public void onPostConstruct() {
 
-        super.onDisable();
+        getDataFolder().mkdirs();
+
+        enable();
+
+        getLogger().info(getName() + "-v" + getVersion() + " enabled.");
+    }
+
+    @PreDestroy
+    public void onPreDestroy() {
+
+        disable();
 
         this.getServer().getScheduler().cancelTasks(this);
 
-        // call the sub plugin to disable
-        disable();
-
-        // TODO: do guice dependency injection
-        // RaidCraft.unregisterComponent(getClass());
-
-        PluginDescriptionFile description = getDescription();
-        getLogger().info(description.getName() + "-v" + description.getVersion() + " disabled.");
+        getLogger().info(getName() + "-v" + getVersion() + " disabled.");
     }
 
+    /**
+     * Called when the plugin is loaded and before it is enabled.
+     *
+     * @see JavaPlugin#onLoad()
+     */
+    public void load() {
+
+    }
+
+    /**
+     * Called once the plugin is enable.
+     *
+     * @see JavaPlugin#onEnable()
+     */
     public abstract void enable();
 
     /**
-     * Override this method to load your plugins configs that depend on other plugins.
+     * Called once the plugin is disabled.
+     *
+     * @see JavaPlugin#onDisable()
      */
-    public void loadDependencyConfigs() {
-    }
-
     public abstract void disable();
-
-    public void reload() {
-
-        disable();
-        enable();
-    }
 
     public void registerEvents(Listener listener) {
         getServer().getPluginManager().registerEvents(listener, this);
