@@ -42,6 +42,7 @@ compileJava {
 archivesBaseName = project.property("pluginName")
 
 repositories {
+    mavenLocal()
     mavenCentral()
     jcenter()
 
@@ -78,6 +79,16 @@ dependencies {
 
     compileOnly "org.spigotmc:spigot-api:${mcVersion}-R0.1-SNAPSHOT"
 
+    implementation group: 'javax.inject', name: 'javax.inject', version: '1'
+    /**
+     * Google guice
+     */
+    implementation group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    /**
+     * Governator for dependency injection and life cycle support.
+     */
+    implementation group: 'com.netflix.governator', name: 'governator', version: '1.17.10'
+
     //Add dependencies here
     implementation 'de.exlll:configlib-bukkit:2.6.0'
     implementation 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
@@ -104,16 +115,22 @@ test {
 shadowJar {
     classifier = ''
     dependencies {
-        include(dependency('de.exlll:configlib-bukkit:2.6.0'))
-        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
-        include(dependency('com.github.stefvanschie.inventoryframework:IF:0.5.19'))
-        include(dependency('jakarta.persistence:jakarta.persistence-api:3.0.0-RC2'))
+        include(dependency('de.exlll:configlib-bukkit:'))
+        include(dependency('co.aikar:acf-paper:'))
+        include(dependency('com.github.stefvanschie.inventoryframework:IF:'))
+        include(dependency('jakarta.persistence:jakarta.persistence-api:'))
+        include(dependency('javax.inject:javax.inject:'))
+        include(dependency('com.google.inject:guice:'))
+        include(dependency('com.netflix.governator:governator:'))
     }
     relocate 'co.aikar.commands', "${packageName}.acf"
     relocate 'co.aikar.locales', "${packageName}.locales"
     relocate 'de.exlll.configlib', "${packageName}.configlib"
     relocate 'com.github.stefvanschie.inventoryframework', "${packageName}.inventoryframework"
     relocate 'jakarta', "${packageName}.jakarta"
+    relocate 'javax.inject', "${packageName}.javax.inject"
+    relocate 'com.google.inject', "${packageName}.com.google.inject"
+    relocate 'com.netflix.governator', "${packageName}.com.netflix.governator"
 }
 
 tasks.build.dependsOn(shadowJar)
