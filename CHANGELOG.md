@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Silthus/sLib/compare/v1.0.4...v1.0.5) (2020-05-23)
+
+
+### Bug Fixes
+
+* **build:** cache hash of yarn.lock ([d60c003](https://github.com/Silthus/sLib/commit/d60c0030904534b03d07ef8c32ee4e0698779a2b))
+
 ## [1.0.4](https://github.com/Silthus/sLib/compare/v1.0.3...v1.0.4) (2020-05-22)
 
 
