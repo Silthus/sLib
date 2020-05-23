@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Silthus/sLib/compare/v1.0.5...v1.0.6) (2020-05-23)
+
+
+### Bug Fixes
+
+* **build:** fixed node caching key ([cad29ea](https://github.com/Silthus/sLib/commit/cad29ea108ce6d5b11cc578bfb65fb50bec86200))
+
 ## [1.0.5](https://github.com/Silthus/sLib/compare/v1.0.4...v1.0.5) (2020-05-23)
 
 
