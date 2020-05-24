@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Silthus/sLib/compare/v1.0.6...v1.1.0) (2020-05-24)
+
+
+### Features
+
+* **core:** add guice and governator dependency injection ([df38e57](https://github.com/Silthus/sLib/commit/df38e57bb24f878b14c546222258257bbb0ff803))
+
 ## [1.0.6](https://github.com/Silthus/sLib/compare/v1.0.5...v1.0.6) (2020-05-23)
 
 
