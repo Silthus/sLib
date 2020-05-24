@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Silthus/sLib/compare/v1.1.0...v1.1.1) (2020-05-24)
+
+
+### Bug Fixes
+
+* **release:** remove github_api_url ([247f4fb](https://github.com/Silthus/sLib/commit/247f4fbc0837accbe1f54bad7048017275b32ab1))
+
 # [1.1.0](https://github.com/Silthus/sLib/compare/v1.0.6...v1.1.0) (2020-05-24)
 
 
