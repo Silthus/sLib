@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Silthus/sLib/compare/v1.1.1...v1.1.2) (2020-05-24)
+
+
+### Bug Fixes
+
+* **release:** use GH_URL env variable ([b7c5c20](https://github.com/Silthus/sLib/commit/b7c5c20311e2cd925f7bf20ead182dc3d5b6226e)), closes [/github.com/semantic-release/github/issues/268#issuecomment-628816386](https://github.com//github.com/semantic-release/github/issues/268/issues/issuecomment-628816386)
+
 ## [1.1.1](https://github.com/Silthus/sLib/compare/v1.1.0...v1.1.1) (2020-05-24)
 
 
