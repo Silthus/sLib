@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Silthus/sLib/compare/v1.2.0...v1.2.1) (2020-05-25)
+
+
+### Bug Fixes
+
+* **release:** lowercase artifact name - this time for real ([e563fc3](https://github.com/Silthus/sLib/commit/e563fc36693dad12357272afbf84fb6181854916))
+
 # [1.2.0](https://github.com/Silthus/sLib/compare/v1.1.2...v1.2.0) (2020-05-25)
 
 
