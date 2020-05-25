@@ -27,6 +27,7 @@ ext {
 group project.property("group")
 
 spigot {
+    name = project.property("pluginName")
     authors = [project.property("author")]
     apiVersion = project.property("apiVersion")
     load = STARTUP
