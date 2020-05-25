@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/Silthus/sLib/compare/v1.1.2...v1.2.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* **release:** lowercase artifact name and case sensitve plugin name ([5d13bc5](https://github.com/Silthus/sLib/commit/5d13bc5e134ece9c6beb6afeeb02b4ac5c2af21c))
+
+
+### Features
+
+* **core:** add guice and governator dependency injection ([ea10f50](https://github.com/Silthus/sLib/commit/ea10f50249a775a1d33fc1179846f8c408b613dc))
+
 ## [1.1.2](https://github.com/Silthus/sLib/compare/v1.1.1...v1.1.2) (2020-05-24)
 
 
