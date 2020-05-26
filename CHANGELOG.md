@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/Silthus/sLib/compare/v1.2.1...v1.2.2) (2020-05-26)
+
+
+### Bug Fixes
+
+* **release:** publish to old namespace ([f5c4471](https://github.com/Silthus/sLib/commit/f5c4471d21352ffa4c3d15282b66db163914bbe2))
+
 ## [1.2.1](https://github.com/Silthus/sLib/compare/v1.2.0...v1.2.1) (2020-05-25)
 
 
