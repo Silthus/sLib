@@ -124,16 +124,16 @@ shadowJar {
         include(dependency('com.google.inject:guice:'))
         include(dependency('com.netflix.governator:governator:'))
     }
-    relocate 'co.aikar.commands', "${packageName}.acf"
-    relocate 'co.aikar.locales', "${packageName}.locales"
-    relocate 'de.exlll.configlib', "${packageName}.configlib"
-    relocate 'com.github.stefvanschie.inventoryframework', "${packageName}.inventoryframework"
-    relocate 'jakarta', "${packageName}.jakarta"
-    relocate 'javax.inject', "${packageName}.javax.inject"
-    relocate 'com.google.inject', "${packageName}.com.google.inject"
-    relocate 'com.netflix.governator', "${packageName}.com.netflix.governator"
 }
 
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "${packageName}.shadow"
+}
+
+tasks.shadowJar.dependsOn tasks.relocateShadowJar
 tasks.build.dependsOn(shadowJar)
 tasks.publish.dependsOn(shadowJar)
 
