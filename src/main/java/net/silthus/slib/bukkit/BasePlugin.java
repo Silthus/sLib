@@ -1,10 +1,8 @@
 package net.silthus.slib.bukkit;
 
-import com.google.inject.Binder;
 import com.netflix.governator.annotations.PreConfiguration;
 import lombok.Getter;
 import net.silthus.slib.injection.SpigotExtension;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -15,7 +13,6 @@ import org.bukkit.plugin.java.JavaPluginLoader;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
-import java.util.logging.Level;
 
 /**
  * @author Silthus
