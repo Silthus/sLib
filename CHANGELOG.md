@@ -1,3 +1,16 @@
+## [1.2.3](https://github.com/Silthus/sLib/compare/v1.2.2...v1.2.3) (2020-06-07)
+
+
+### Bug Fixes
+
+* only copy default config.yml if it exists ([d50c84b](https://github.com/Silthus/sLib/commit/d50c84bf733c38e7533201997dfa768097e28dee))
+* **publish:** include shadow dependencies in maven publication ([07c847f](https://github.com/Silthus/sLib/commit/07c847fa4b7467f6ca12a8f735bd97501535d327))
+
+
+### Reverts
+
+* include shadow dependencies in maven publication ([5877008](https://github.com/Silthus/sLib/commit/58770086fa180089f976583d6664861a39637f6d))
+
 ## [1.2.2](https://github.com/Silthus/sLib/compare/v1.2.1...v1.2.2) (2020-05-26)
 
 
