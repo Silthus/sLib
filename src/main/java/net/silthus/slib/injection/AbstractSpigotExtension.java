@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public abstract class AbstractSpigotExtension extends JavaPlugin implements IsabelleExtension, Module {
@@ -46,7 +47,10 @@ public abstract class AbstractSpigotExtension extends JavaPlugin implements Isab
     @Override
     public void onEnable() {
 
-        saveDefaultConfig();
+        if (Objects.nonNull(getResource("config.yml"))) {
+            saveDefaultConfig();
+        }
+
         reloadConfig();
 
         start();
