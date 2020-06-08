@@ -1,3 +1,11 @@
+## [1.2.4](https://github.com/Silthus/sLib/compare/v1.2.3...v1.2.4) (2020-06-08)
+
+
+### Bug Fixes
+
+* **injection:** provide scoreboard manager at runtime ([6ce5f1e](https://github.com/Silthus/sLib/commit/6ce5f1e8269044f56352a35dad6c43315c943c65))
+* **publish:** include all dependencies in the final jar ([b7b4d0e](https://github.com/Silthus/sLib/commit/b7b4d0e8ecfa8d9d3eb5ae9e9c6998d13a971cf5))
+
 ## [1.2.3](https://github.com/Silthus/sLib/compare/v1.2.2...v1.2.3) (2020-06-07)
 
 
