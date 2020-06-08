@@ -89,11 +89,19 @@ dependencies {
      * Governator for dependency injection and life cycle support.
      */
     implementation group: 'com.netflix.governator', name: 'governator', version: '1.17.10'
+    implementation group: 'com.netflix.governator', name: 'governator-api', version: '1.17.10'
+    implementation group: 'com.netflix.governator', name: 'governator-core', version: '1.17.10'
+    // https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api
+    compile group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: '1.3.5'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    // https://mvnrepository.com/artifact/aopalliance/aopalliance
+    compile group: 'aopalliance', name: 'aopalliance', version: '1.0'
+
 
     //Add dependencies here
     implementation 'de.exlll:configlib-bukkit:2.6.0'
-    implementation 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
-    implementation 'com.github.stefvanschie.inventoryframework:IF:0.5.19'
     implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0-RC2'
 
     //Test dependencies
@@ -117,21 +125,16 @@ shadowJar {
     classifier = ''
     dependencies {
         include(dependency('de.exlll:configlib-bukkit:'))
-        include(dependency('co.aikar:acf-paper:'))
-        include(dependency('com.github.stefvanschie.inventoryframework:IF:'))
         include(dependency('jakarta.persistence:jakarta.persistence-api:'))
         include(dependency('javax.inject:javax.inject:'))
         include(dependency('com.google.inject:guice:'))
-        include(dependency('com.netflix.governator:governator:'))
+        include(dependency('com.netflix.governator::'))
+        include(dependency('jakarta.annotation:jakarta.annotation-api:'))
+        include(dependency('org.slf4j:slf4j-api:'))
+        include(dependency('aopalliance:aopalliance:'))
     }
-    relocate 'co.aikar.commands', "${packageName}.acf"
-    relocate 'co.aikar.locales', "${packageName}.locales"
+
     relocate 'de.exlll.configlib', "${packageName}.configlib"
-    relocate 'com.github.stefvanschie.inventoryframework', "${packageName}.inventoryframework"
-    relocate 'jakarta', "${packageName}.jakarta"
-    relocate 'javax.inject', "${packageName}.javax.inject"
-    relocate 'com.google.inject', "${packageName}.com.google.inject"
-    relocate 'com.netflix.governator', "${packageName}.com.netflix.governator"
 }
 
 tasks.build.dependsOn(shadowJar)
