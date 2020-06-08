@@ -46,7 +46,6 @@ public class SpigotModule extends AbstractModule {
         bind(Server.class).toInstance(plugin.getServer());
         bind(PluginManager.class).toInstance(plugin.getServer().getPluginManager());
         bind(BukkitScheduler.class).toInstance(plugin.getServer().getScheduler());
-        bind(ScoreboardManager.class).toInstance(plugin.getServer().getScoreboardManager());
         bind(ServicesManager.class).toInstance(plugin.getServer().getServicesManager());
         bind(Messenger.class).toInstance(plugin.getServer().getMessenger());
         bind(ItemFactory.class).toInstance(plugin.getServer().getItemFactory());
@@ -82,5 +81,16 @@ public class SpigotModule extends AbstractModule {
     public Logger provideServerLogger() {
 
         return plugin.getServer().getLogger();
+    }
+
+    /**
+     * Provides the {@link ScoreboardManager} after at least one world is loaded.
+     *
+     * @return ScoreboardManager or null if no worlds are loaded
+     */
+    @Provides
+    public ScoreboardManager provideScoreboardManager() {
+
+        return plugin.getServer().getScoreboardManager();
     }
 }
