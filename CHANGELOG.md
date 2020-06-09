@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Silthus/sLib/compare/v1.2.4...v1.3.0) (2020-06-09)
+
+
+### Features
+
+* **config:** add Configured interface for easy config loading ([ae87079](https://github.com/Silthus/sLib/commit/ae87079bc5843fb889f61470485ce32498452c4c))
+
 ## [1.2.4](https://github.com/Silthus/sLib/compare/v1.2.3...v1.2.4) (2020-06-08)
 
 
