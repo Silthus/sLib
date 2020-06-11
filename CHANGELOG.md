@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Silthus/sLib/compare/v1.4.0...v1.5.0) (2020-06-11)
+
+
+### Features
+
+* **injection:** bundle guice assisted inject extension ([5b2891c](https://github.com/Silthus/sLib/commit/5b2891c072216bbb314e19db2b0a82b6071d7aa3))
+
 # [1.4.0](https://github.com/Silthus/sLib/compare/v1.3.0...v1.4.0) (2020-06-09)
 
 
