@@ -85,6 +85,9 @@ dependencies {
      * Google guice
      */
     implementation group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    // https://mvnrepository.com/artifact/com.google.inject.extensions/guice-assistedinject
+    implementation group: 'com.google.inject.extensions', name: 'guice-assistedinject', version: '4.2.3'
+
     /**
      * Governator for dependency injection and life cycle support.
      */
@@ -131,7 +134,8 @@ shadowJar {
         include(dependency('de.exlll:configlib-bukkit:'))
         include(dependency('jakarta.persistence:jakarta.persistence-api:'))
         include(dependency('javax.inject:javax.inject:'))
-        include(dependency('com.google.inject:guice:'))
+        include(dependency('com.google.inject::'))
+        include(dependency('com.google.inject.extensions::'))
         include(dependency('com.netflix.governator::'))
         include(dependency('jakarta.annotation:jakarta.annotation-api:'))
         include(dependency('org.slf4j:slf4j-api:'))
