@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/Silthus/sLib/compare/v1.5.0...v1.5.1) (2020-06-12)
+
+
+### Bug Fixes
+
+* provide backwards compatibility with MC 1.13 ([7404ee6](https://github.com/Silthus/sLib/commit/7404ee68de9e3e02f295970430fbdd302d78abb0)), closes [#2](https://github.com/Silthus/sLib/issues/2)
+
 # [1.5.0](https://github.com/Silthus/sLib/compare/v1.4.0...v1.5.0) (2020-06-11)
 
 
