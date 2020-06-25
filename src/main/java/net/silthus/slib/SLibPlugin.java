@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
 
-@kr.entree.spigradle.Plugin
+@kr.entree.spigradle.PluginMain
 public class SLibPlugin extends BasePlugin {
 
     public SLibPlugin() {
@@ -21,7 +21,7 @@ public class SLibPlugin extends BasePlugin {
 
     @Override
     public void enable() {
-        
+
     }
 
     @Override
