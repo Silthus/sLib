@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/Silthus/sLib/compare/v1.5.1...v1.5.2) (2020-08-16)
+
+
+### Bug Fixes
+
+* **build:** use the jitpack repo for configlib ([eca2695](https://github.com/Silthus/sLib/commit/eca26950120004ed8566962b63aa48a5e3a0fe14))
+
 ## [1.5.1](https://github.com/Silthus/sLib/compare/v1.5.0...v1.5.1) (2020-06-12)
 
 
