@@ -2,13 +2,14 @@ package net.silthus.slib;
 
 import com.google.inject.Binder;
 import com.netflix.governator.guice.BootstrapBinder;
+import kr.entree.spigradle.annotations.Plugin;
 import net.silthus.slib.bukkit.BasePlugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
 
-@kr.entree.spigradle.Plugin
+@Plugin
 public class SLibPlugin extends BasePlugin {
 
     public SLibPlugin() {

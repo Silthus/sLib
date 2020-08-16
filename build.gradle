@@ -6,10 +6,12 @@ buildscript {
 }
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
-    id 'kr.entree.spigradle' version '1.2.1'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'kr.entree.spigradle' version '2.1.1'
     id 'java'
     id 'jacoco'
+    id 'idea'
+    id "io.freefair.lombok" version "5.1.0"
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
@@ -43,29 +45,11 @@ compileJava {
 archivesBaseName = project.property("pluginName")
 
 repositories {
-    mavenLocal()
     mavenCentral()
     jcenter()
 
-    //Added spigot repository
-    maven {
-        name = 'Spigot'
-        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-
-        content {
-            includeGroup 'org.bukkit'
-            includeGroup 'org.spigotmc'
-        }
-    }
-
-    maven {
-        name = 'github'
-        url = 'https://maven.pkg.github.com/Silthus/ConfigLib'
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
-        }
-    }
+    jitpack()
+    spigot()
 
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
@@ -108,7 +92,7 @@ dependencies {
 
 
     //Add dependencies here
-    implementation 'de.exlll:configlib-bukkit:2.6.0'
+    implementation 'net.silthus.configlib:configlib-bukkit:2.6.0'
     implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0-RC2'
 
     //Test dependencies
@@ -162,67 +146,4 @@ processResources {
     expand project.properties
 }
 
-task cleanPlugin() {
-    group 'deploy'
-    description 'Cleans the plugin in the working directory up'
-    delete 'working/plugins/' + project.property("pluginName") + '-' + project.version.toString() + '.jar'
-}
-
-task copyPluginYaml(type: Copy, dependsOn: spigotPluginYaml) {
-    from(new File(spigotPluginYaml.temporaryDir, "plugin.yml"))
-    into(sourceSets.main.resources.srcDirs[0])
-}
-
-task deploy(type: Copy, dependsOn: [
-    'cleanPlugin',
-    'jar'
-]) {
-    group 'deploy'
-    description 'Exports you plugin to the plugin directory in your test server'
-
-    def pluginFolder = project.property('pluginFolder').toString()
-
-    from shadowJar
-    into pluginFolder.isEmpty() ? 'working/plugins' : pluginFolder
-}
-
-task setupServer {
-    group 'server'
-    description 'Downloads the server jar'
-
-    def server = new File('working/server.jar')
-
-    if (server.exists()) {
-        server.delete()
-    }
-
-    def url = ''
-    switch (mcVersion) {
-        case '1.8.8':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar'
-            break
-
-        case '1.12.2':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar'
-            break
-
-        case '1.13.2':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar'
-            break
-
-        case '1.14.4':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.14.4.jar'
-            break
-        case '1.15.2':
-            url = 'https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar'
-            break
-    }
-
-    if (url.isEmpty()) {
-        throw new GradleException('NOT A SUPPORTED VERSION, PLEASE USE [1.8.8, 1.12.2, 1.13.2, 1.14.4, 1.15.2]!')
-    }
-
-    new URL(url).withInputStream { i -> server.withOutputStream { it << i } }
-}
-
-defaultTasks 'build', 'deploy'
+defaultTasks 'build'
